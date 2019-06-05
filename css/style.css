@@ -48,6 +48,9 @@ section {
 ul {
   list-style-type: disc;
 }
+ol {
+  list-style-type: lower-greek;
+}
 .listContainer {
   display: block;
   margin-top: 15px;
