@@ -4,15 +4,19 @@ var questions = [
   'Do I know HTML5?',
   'Do I know CSS3?',
   'Do I know C#?',
-  'Do I know NoSQL DB stuff?'
+  'Do I know NoSQL DB stuff?',
+  'Do I know how to use docs?'
 ];
-
+var totalQuestions = questions.length;
+var correctAnswers = 0;
 var currentHref = window.location.href;
 
 for (let i = 0; i < questions.length; i++){
+  console.log('correct Answers:' + correctAnswers);
   var res = prompt('Yes or no:\n' + questions[i]).toLowerCase();
   console.log('user responded with: \n' + questions[i] + ' distilled to: ' + res[0]);
   if (res[0] === 'y') {
+    correctAnswers++;
     alert('Yup');
   } else if (res[0] === 'n') {
     alert('Nope!');
@@ -26,8 +30,28 @@ for (let i = 0; i < questions.length; i++){
     break;
   }
 }
-var random = Math.floor(Math.random() * 10);
+
+var topping = prompt('What are the best toppings?').toLowerCase();
+totalQuestions++;
+var potentialPizzaAnswers = [
+  'cheese',
+  'pepperoni',
+  'sausage',
+  'chicken',
+  'peppers'
+];
+for(var i = 0; i<potentialPizzaAnswers.length; i++){
+  if (potentialPizzaAnswers[0] === topping){
+    correctAnswers++;
+    alert('thats a good one!');
+    break;
+  }
+}
+console.log('correct Answers:' + correctAnswers);
+var random = Math.floor(Math.random() * 10) +1;
+console.log('random number: ' + random);
 var guess = null;
+totalQuestions++;
 do {
   console.log('guess: ' + typeof guess);
   console.log('random: ' + typeof random);
@@ -39,7 +63,11 @@ do {
     alert('high');
   }
   else if (guess === random){
-    alert('you sank my battleship');
+    alert('You sank my battleship');
+    correctAnswers++;
   }
+  i++;
 }
-while (guess !== random);
+while (guess !== random && (i < 4));
+//plus 2 for the number guesser game thing and the multiple choice.
+alert('You got: ' + correctAnswers + ' out of ' + totalQuestions + ' right!');
