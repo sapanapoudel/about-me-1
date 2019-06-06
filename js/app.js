@@ -1,21 +1,21 @@
 'use strict';
 var questions = [
-  'Is Rick and Morty the greatest show with the worst fans?',
-  'Is 42 the answer to life, the universe, everything?',
-  'Is it a good idea to avoid hungry bears?',
-  'Should we stop asking about Woodchuck\'s and their wood chucking?',
-  'Hello, is it me you\'re looking for?'
+  'Do I know Javascript?',
+  'Do I know HTML5?',
+  'Do I know CSS3?',
+  'Do I know C#?',
+  'Do I know NoSQL DB stuff?'
 ];
 
 var currentHref = window.location.href;
 
 for (let i = 0; i < questions.length; i++){
   var res = prompt('Yes or no:\n' + questions[i]).toLowerCase();
-  console.log('user responded with: \n' + questions[i] + ' distilled to' + res[0]);
+  console.log('user responded with: \n' + questions[i] + ' distilled to: ' + res[0]);
   if (res[0] === 'y') {
-    alert('You have the correct opinion');
+    alert('Yup');
   } else if (res[0] === 'n') {
-    alert('Thats....thats the wrong opinion');
+    alert('Nope!');
   } else {
     alert('Get off my page illitarate traveler!');
     //This forces a redirect for not answering with a yes or no. In doing so, it compleatly overwrites the current url, removing the back funcitonallity. Here I'm pushing the current location into history
@@ -26,4 +26,20 @@ for (let i = 0; i < questions.length; i++){
     break;
   }
 }
-
+var random = Math.floor(Math.random() * 10);
+var guess = null;
+do {
+  console.log('guess: ' + typeof guess);
+  console.log('random: ' + typeof random);
+  console.log('guess !== random: ' + (guess !== random));
+  guess = parseInt(prompt('pick a number between 1 and 10'), 10);
+  if( guess<random){
+    alert('low dude');
+  } else if (guess> random){
+    alert('high');
+  }
+  else if (guess === random){
+    alert('you sank my battleship');
+  }
+}
+while (guess !== random);
